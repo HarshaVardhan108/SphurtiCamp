@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success | Sphurti Camp 2026</title>
+    <link rel="icon" type="image/svg+xml" href="camp-icon.svg">
+    <style>
+        :root {
+            --bg-a: #0f1a33;
+            --bg-b: #1b294b;
+            --bg-c: #533053;
+            --card: rgba(18, 28, 52, 0.58);
+            --text: #f6f8ff;
+            --muted: #c5cddd;
+            --accent: #ff8e3f;
+            --accent-soft: #ffd1a0;
+            --line: rgba(167, 181, 218, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--bg-a), var(--bg-b), var(--bg-c));
+            background-size: 220% 220%;
+            animation: bgShift 16s ease infinite;
+            overflow-x: hidden;
+        }
+
+        .ambient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.3;
+            background:
+                radial-gradient(circle at 12% 12%, #63a6ff50 0%, transparent 42%),
+                radial-gradient(circle at 85% 14%, #ffb56a40 0%, transparent 36%),
+                radial-gradient(circle at 48% 86%, #f56dd238 0%, transparent 35%);
+            animation: pulseGlow 12s ease-in-out infinite alternate;
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(95px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb-a {
+            width: 320px;
+            height: 320px;
+            background: #76beff40;
+            top: -80px;
+            left: 8vw;
+            animation: floatA 15s ease-in-out infinite;
+        }
+
+        .orb-b {
+            width: 280px;
+            height: 280px;
+            background: #ffb56a3a;
+            right: 6vw;
+            top: 46vh;
+            animation: floatB 16s ease-in-out infinite;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            padding: 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 540px;
+            border-radius: 1.75rem;
+            border: 1px solid var(--line);
+            background: var(--card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 24px 56px rgba(7, 9, 18, 0.45);
+            padding: 2.2rem 1.6rem;
+            text-align: center;
+            animation: cardIn 880ms cubic-bezier(.16, .84, .44, 1) both;
+        }
+
+        .badge {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at 28% 18%, #ffc891, #ff8e3f);
+            box-shadow: 0 10px 30px rgba(255, 145, 58, 0.35);
+            animation: popIn 0.8s ease both;
+        }
+
+        .badge svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            letter-spacing: 0.2px;
+            animation: slideFade 1s ease both;
+        }
+
+        .message {
+            margin: 0.85rem auto 0;
+            max-width: 420px;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 1rem;
+            animation: slideFade 1.2s ease both;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1.7rem;
+            flex-wrap: wrap;
+            animation: slideFade 1.3s ease both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.3rem;
+            border-radius: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(96deg, #ff7b22 0%, #ffb163 50%, #ffd1a0 100%);
+            background-size: 170% 170%;
+            box-shadow: 0 12px 30px rgba(255, 120, 34, 0.34);
+            animation: sheenFlow 5s ease-in-out infinite;
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            border: 1px solid var(--line);
+            background: rgba(146, 162, 196, 0.12);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 16px 38px rgba(255, 120, 34, 0.45);
+        }
+
+        @keyframes bgShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: .2; }
+            100% { transform: scale(1.08); opacity: .34; }
+        }
+
+        @keyframes floatA {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 35px) scale(1.1); }
+        }
+
+        @keyframes floatB {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-28px, -22px) scale(1.08); }
+        }
+
+        @keyframes cardIn {
+            0% { opacity: 0; transform: translateY(24px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideFade {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sheenFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.8rem 1rem;
+                border-radius: 1.25rem;
+            }
+
+            .actions {
+                gap: 0.65rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+
+    <main class="page">
+        <section class="card" aria-label="Registration Success">
+            <div class="badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 13L9.2 17L19 7.5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <h1>Registration Successful</h1>
+            <p class="message">
+                Thank you for registering for <strong>Sphurti Camp 2026</strong>. We have received your details and will contact you soon with event updates and payment guidance.
+            </p>
+
+            <div class="actions">
+                <a class="btn btn-primary" href="index.html">Back to Home</a>
+                <a class="btn btn-secondary" href="register.html">Submit Another Form</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
